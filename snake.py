@@ -1,6 +1,7 @@
- import pygame
+import pygame
 import sys
 import random
+import tkinter
 import time
 
 pygame.init()
@@ -103,7 +104,7 @@ while True:
         snake_x += speed_x
         snake_y += speed_y
         if abs(snake_x - bonus_x) < 10 and abs(snake_y - bonus_y) < 10:
-            snake_size += 1
+            snake_size += 5
             bonus_x = random.randrange(0, 1190)
             bonus_y = random.randrange(0, 665)
             snake_speed += 2
@@ -133,7 +134,7 @@ while True:
         pygame.display.flip()
         sc.fill((0, 0, 255))
         font = pygame.font.SysFont('Arial', 100)
-        score = font.render('You scored ' + str(snake_size-1), True, (255, 0, 0))
+        score = font.render('You scored ' + str((snake_size-1)//5), True, (255, 0, 0))
         sc.blit(score, (340, 308))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
